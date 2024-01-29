@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "nom": "Papier A4",
+    "texture": "Lisse",
+    "grammage": 80,
+    "prix": 5.99,
+    "couleur": "Blanc"
+  },
+  {
+    "id": 2,
+    "nom": "Papier recyclé",
+    "texture": "Rugueux",
+    "grammage": 100,
+    "prix": 7.99,
+    "couleur": "Naturel"
+  },
+  {
+    "id": 3,
+    "nom": "Papier cartonné",
+    "texture": "Épais",
+    "grammage": 200,
+    "prix": 12.99,
+    "couleur": "Ivoire"
+  },
+  {
+    "id": 4,
+    "nom": "Papier kraft",
+    "texture": "Granuleux",
+    "grammage": 120,
+    "prix": 9.99,
+    "couleur": "Marron"
+  },
+  {
+    "id": 5,
+    "nom": "Papier satiné",
+    "texture": "Lisse",
+    "grammage": 150,
+    "prix": 11.99,
+    "couleur": "Champagne"
+  },
+  {
+    "id": 6,
+    "nom": "Papier calque",
+    "texture": "Transparent",
+    "grammage": 40,
+    "prix": 3.99,
+    "couleur": null
+  },
+  {
+    "id": 7,
+    "nom": "Papier photo brillant",
+    "texture": "Brillant",
+    "grammage": 250,
+    "prix": 19.99,
+    "couleur": null
+  },
+  {
+    "id": 8,
+    "nom": "Papier vélin",
+    "texture": "DouxC",
+    "grammage": 90,
+    "prix": 6.99,
+    "couleur": "Crème"
+  },
+  {
+    "id": 9,
+    "nom": "Papier métallisé",
+    "texture": "Lisse",
+    "grammage": 120,
+    "prix": 14.99,
+    "couleur": "Argent"
+  },
+  {
+    "id": 10,
+    "nom": "Papier texturé",
+    "texture": "Texturé",
+    "grammage": 180,
+    "prix": 10.99,
+    "couleur": "Bleu ciel"
+  }
+]
