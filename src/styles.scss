@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+//couleur
+$couleurFond : #141c28;
+$couleurTexte : #ffffff;
+
+//police
+$policeArrondie: 'Arial Rounded MT Bold', sans-serif;
+
+
+body {
+  background-color: $couleurFond;
+  font-family: $policeArrondie;
+  color : $couleurTexte;
+}
+
