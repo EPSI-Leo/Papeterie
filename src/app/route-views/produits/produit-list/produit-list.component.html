@@ -1,0 +1,9 @@
+<div class="content">
+  <ul>
+    <li *ngFor="let p of getProduits()" (click)="onClick(p)">
+      {{ p.id }} {{ p.nom }} {{ p.prix }}
+    </li>
+  </ul>
+
+  <button (click)="goToAdd()">Ajouter un produit</button>
+</div>

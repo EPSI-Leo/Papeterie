@@ -1,4 +1,4 @@
-export class Produits {
+export class Produit {
     private _id: number;
     private _nom: string;
     private _texture: string;
@@ -68,3 +68,5 @@ export class Produits {
       return this._couleur;
     }
   }
+
+  // TODO : meilleure génération des ID

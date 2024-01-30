@@ -1,0 +1,8 @@
+<div *ngIf="produit" class="content">
+  <h2>{{ produit.id }} {{ produit.nom }}</h2>
+  <p>Texture: {{ produit.texture }}</p>
+  <p>Grammge: {{ produit.grammage }}</p>
+  <p>Prix: {{ produit.prix }}</p>
+  <p>Couleur: {{ produit.couleur }}</p>
+</div>
+<div *ngIf="!produit">Player not found</div>
