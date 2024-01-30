@@ -1,0 +1,27 @@
+.content {
+  flex-direction : column;
+  columns : 2;
+}
+.left-content {
+  flex: 1;
+}
+
+.right-content {
+  flex: 1;
+  text-align: right;
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.horaires-list {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.right-content img {
+  max-width: 60%;
+  align-items: center;
+}
