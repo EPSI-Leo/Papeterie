@@ -33,7 +33,14 @@ export class ProduitService {
 
   }
 
-  public updateProduit(p: Produit){
+  public updateProduit(updatedP: Produit){
+    const index = this._Produits.findIndex((p) => p.id === updatedP.id);
+
+    if (index !== -1) {
+      this._Produits[index] = updatedP;
+    } else {
+      console.error(`Produit avec l'ID ${updatedP.id} introuvable.`);
+    }
 
   }
 
