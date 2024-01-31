@@ -35,7 +35,7 @@ export class Produit {
       }
 
       // Initialisation des propriétés
-      this._id = Math.floor(Math.random() * 1000);
+      this._id = 0;
       this._nom = nom;
       this._texture = texture;
       this._grammage = grammage;
@@ -69,6 +69,10 @@ export class Produit {
     }
 
     // Setters
+    set id(value: number) {
+      this._id = value;
+    }
+
     set nom(value: string) {
       if (!value || value.length > 100) {
         throw new Error('Le nom est obligatoire et doit avoir au maximum 100 caractères.');
@@ -104,5 +108,3 @@ export class Produit {
       this._couleur = value;
     }
   }
-
-  // TODO : meilleure génération des ID
