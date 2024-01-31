@@ -21,10 +21,10 @@ export class ProduitDetailsComponent {
 
   public produitForm = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    texture: new FormControl('', Validators.required),
-    grammage: new FormControl(null) as FormControl<number | null>,
-    prix: new FormControl(null) as FormControl<number | null>,
-    couleur: new FormControl(''),
+    texture: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    grammage: new FormControl(null, [Validators.required, Validators.min(10), Validators.max(1000)]) as FormControl<number | null>,
+    prix: new FormControl(null, [Validators.required, Validators.min(0.01), Validators.max(1000)]) as FormControl<number | null>,
+    couleur: new FormControl('', [Validators.minLength(3), Validators.maxLength(25)])
   });
 
   ngOnInit(): void {

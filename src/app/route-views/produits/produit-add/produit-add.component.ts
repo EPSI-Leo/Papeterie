@@ -16,16 +16,16 @@ export class ProduitAddComponent {
   public constructor(private _produitService: ProduitService, private _router: Router) { }
 
   public produitForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    texture: new FormControl('', Validators.required),
-    grammage: new FormControl(null) as FormControl<number | null>,
-    prix: new FormControl(null) as FormControl<number | null>,
-    couleur: new FormControl(''),
+    nom: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+    texture: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    grammage: new FormControl(null, [Validators.required, Validators.min(10), Validators.max(1000)]),
+    prix: new FormControl(null, [Validators.required, Validators.min(0.01), Validators.max(1000)]),
+    couleur: new FormControl('', [Validators.minLength(3), Validators.maxLength(25)])
   });
 
   public onSubmit() {
     this.produit = new Produit(
-      this.produitForm.value.name!,
+      this.produitForm.value.nom!,
       this.produitForm.value.texture!,
       this.produitForm.value.grammage!,
       this.produitForm.value.prix!,
@@ -41,8 +41,6 @@ export class ProduitAddComponent {
 
   public shouldShowError(controlName: string) {
     return !this.produitForm.get(controlName)!.valid &&
-            this.produitForm.get(controlName)!.touched;
+      this.produitForm.get(controlName)!.touched;
   }
 }
-
-// TODO : affichage des erreurs correct

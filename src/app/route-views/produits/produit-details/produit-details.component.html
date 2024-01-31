@@ -1,8 +1,5 @@
 <div class="container">
-
-
   <div *ngIf="produit && !isEditing" class="content product-details">
-
     <h1 class="title-details"><u>Détails du produit</u></h1>
     <h2>{{ produit.id }} {{ produit.nom }}</h2>
     <p>Texture: {{ produit.texture }}</p>
@@ -13,40 +10,55 @@
   </div>
   <div *ngIf="!produit" class="product-not-found">Produit introuvable</div>
 
-
-
-  <form
-    *ngIf="isEditing"
-    [formGroup]="produitForm"
-    (ngSubmit)="onSubmit()"
-    class="content product-form"
-  >
-
-  <h1 class="title"><u>Modifier un produit</u></h1>
-    <div>
-      <label for="nom" class="label-modif">Nom du produit</label>
-      <input id="nom" formControlName="nom" />
-      <div style="color: red" *ngIf="shouldShowError('nom')">
-        Le nom est requis
+  <section *ngIf="isEditing" class="section-formulaire">
+    <h1 class="title"><u>Modifier le produit</u></h1>
+    <form [formGroup]="produitForm" (ngSubmit)="onSubmit()" class="custom-form">
+      <div class="form-group">
+        <label for="nom">Nom du produit :</label>
+        <input id="nom" formControlName="nom" />
+        <div class="error-message" *ngIf="shouldShowError('nom')">
+          Le nom est requis et doit avoir au maximum 100 caractères
+        </div>
       </div>
-    </div>
-    <div>
-      <label for="texture" class="label-modif">Texture du produit</label>
-      <input id="texture" formControlName="texture" />
-    </div>
-    <div>
-      <label for="grammage" class="label-modif">Grammage du produit</label>
-      <input id="grammage" formControlName="grammage" />
-    </div>
-    <div>
-      <label for="prix" class="label-modif">Prix du produit</label>
-      <input id="prix" formControlName="prix" />
-    </div>
-    <div>
-      <label for="couleur" class="label-modif">Couleur du produit</label>
-      <input id="couleur" formControlName="couleur" />
-    </div>
-    <button type="submit" [disabled]="!produitForm.valid">Sauvegarder</button>
-    <button (click)="onClick()">Cancel</button>
-  </form>
+
+      <div class="form-group">
+        <label for="texture">Texture du produit :</label>
+        <input id="texture" formControlName="texture" />
+        <div class="error-message" *ngIf="shouldShowError('texture')">
+          La texture est requise et doit avoir au maximum 50 caractères
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="grammage">Grammage du produit :</label>
+        <input id="grammage" formControlName="grammage" />
+        <div class="error-message" *ngIf="shouldShowError('grammage')">
+          Le grammage est requis et doit être un nombre entre 10 et 1000
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="prix">Prix du produit :</label>
+        <input id="prix" formControlName="prix" />
+        <div class="error-message" *ngIf="shouldShowError('prix')">
+          Le prix est requis et doit être un nombre entre 0.01 et 1000
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="couleur">Couleur du produit :</label>
+        <input id="couleur" formControlName="couleur" />
+        <div class="error-message" *ngIf="shouldShowError('couleur')">
+          La couleur doit avoir entre 3 et 25 caractères
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" [disabled]="!produitForm.valid">
+          Sauvegarder
+        </button>
+        <button type="button" (click)="onClick()">Annuler</button>
+      </div>
+    </form>
+  </section>
 </div>
