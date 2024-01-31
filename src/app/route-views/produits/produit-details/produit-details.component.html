@@ -1,13 +1,15 @@
-<div *ngIf="produit" class="content">
+<div *ngIf="produit && !isEditing" class="content">
   <h2>{{ produit.id }} {{ produit.nom }}</h2>
   <p>Texture: {{ produit.texture }}</p>
   <p>Grammge: {{ produit.grammage }}</p>
   <p>Prix: {{ produit.prix }}</p>
   <p>Couleur: {{ produit.couleur }}</p>
+  <button (click)="onClick()">Modifier le produit</button>
 </div>
 <div *ngIf="!produit">Produit introuvable</div>
 
-<form [formGroup]="produitForm" (ngSubmit)="onSubmit()" class="content">
+
+<form *ngIf="isEditing" [formGroup]="produitForm" (ngSubmit)="onSubmit()" class="content">
   <div>
     <label for="nom">Nom du produit</label>
     <input id="nom" formControlName="nom">

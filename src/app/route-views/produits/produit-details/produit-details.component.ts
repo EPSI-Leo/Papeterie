@@ -12,6 +12,7 @@ import { ProduitService } from 'src/app/services/produits.service';
 export class ProduitDetailsComponent {
 
   public produit: Produit | undefined;
+  public isEditing = false;
 
   public constructor(
     private _activeRoute: ActivatedRoute,
@@ -41,6 +42,7 @@ export class ProduitDetailsComponent {
   }
 
   public onClick() {
+    this.isEditing = !this.isEditing;
   }
 
   public shouldShowError(controlName: string) {
@@ -56,6 +58,7 @@ export class ProduitDetailsComponent {
     this.produit!.couleur = this.produitForm.value.couleur!;
 
     this._produitService.updateProduit(this.produit!);
+    this.isEditing = false;
   }
 }
 // TODO : meilleur typage
