@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProduitService {
 
   private _Produits: Produit[] = [];
+  private _nextId: number = 1; // Incrementing ID
 
   public constructor(private _httpClient: HttpClient) {
     this.loadProduitsData();
@@ -18,6 +19,7 @@ export class ProduitService {
     this._httpClient.get<Produit[]>('assets/produit.json').subscribe({
       next: (data: Produit[]) => {
         this._Produits = data;
+        this.updateNextId();
       },
       error: (error) => {
         console.error('Error loading produit.json', error);
@@ -25,7 +27,13 @@ export class ProduitService {
     });
   }
 
+  private updateNextId(): void {
+    const maxId = Math.max(...this._Produits.map(produit => produit.id), 0);
+    this._nextId = maxId + 1;
+  }
+
   public addProduit(produit: Produit): void {
+    produit.id = this._nextId++;
     this._Produits.push(produit);
   }
 
