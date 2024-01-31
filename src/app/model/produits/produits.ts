@@ -67,6 +67,42 @@ export class Produit {
     get couleur(): string | undefined {
       return this._couleur;
     }
+    
+    // Setters
+    set nom(value: string) {
+      if (!value || value.length > 100) {
+        throw new Error('Le nom est obligatoire et doit avoir au maximum 100 caractères.');
+      }
+      this._nom = value;
+    }
+
+    set texture(value: string) {
+      if (!value || value.length > 50) {
+        throw new Error('La texture est obligatoire et doit avoir au maximum 50 caractères.');
+      }
+      this._texture = value;
+    }
+
+    set grammage(value: number) {
+      if (value < 10 || value > 1000) {
+        throw new Error('Le grammage doit être un nombre entre 10 et 1000.');
+      }
+      this._grammage = value;
+    }
+
+    set prix(value: number) {
+      if (value < 0 || value > 1000) {
+        throw new Error('Le prix doit être un nombre entre 0 et 1000.');
+      }
+      this._prix = value;
+    }
+
+    set couleur(value: string | undefined) {
+      if (value && (value.length < 3 || value.length > 25)) {
+        throw new Error('La couleur facultative doit avoir entre 3 et 25 caractères.');
+      }
+      this._couleur = value;
+    }
   }
 
   // TODO : meilleure génération des ID
