@@ -16,11 +16,12 @@ body {
 .content {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Ajoute de l'espace entre les colonnes */
+  //gap: 20px; /* Ajoute de l'espace entre les colonnes */
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden; /* Assure que tout reste dans les coins arrondis */
+  margin-top: 1em;
 }
 
 .left-content {
@@ -68,8 +69,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 3em;
   //padding: 40px;
-  padding: 0 50px;
+  //padding: 0 50px;
 }
 
 .right-content img {
