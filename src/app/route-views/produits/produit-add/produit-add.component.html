@@ -1,25 +1,41 @@
-<form [formGroup]="produitForm" (ngSubmit)="onSubmit()" class="content">
-  <div>
-    <label for="name">Nom du produit</label>
-    <input id="name" formControlName="name">
-    <div style="color:red" *ngIf="shouldShowError('name')">Le nom est requis</div>
-  </div>
-  <div>
-    <label for="texture">Texture du produit</label>
-    <input id="texture" formControlName="texture">
-  </div>
-  <div>
-    <label for="grammage">Grammage du produit</label>
-    <input id="grammage" formControlName="grammage">
-  </div>
-  <div>
-    <label for="prix">Prix du produit</label>
-    <input id="prix" formControlName="prix">
-  </div>
-  <div>
-    <label for="couleur">Couleur du produit</label>
-    <input id="couleur" formControlName="couleur">
-  </div>
-  <button type="submit" [disabled]="!produitForm.valid">Sauvegarder</button>
-  <button (click)="onClick()">Cancel</button>
-</form>
+<!-- product-form.component.html -->
+
+<body class="body-with-background">
+  <section class="section-formulaire">
+
+    <h1 class="title"><u>Ajouter un produit</u></h1>
+    <form [formGroup]="produitForm" (ngSubmit)="onSubmit()" class="custom-form">
+      <div class="form-group">
+        <label for="name">Nom du produit :</label>
+        <input id="name" formControlName="name">
+        <div class="error-message" *ngIf="shouldShowError('name')">Le nom est requis</div>
+      </div>
+
+      <div class="form-group">
+        <label for="texture">Texture du produit :</label>
+        <input id="texture" formControlName="texture">
+      </div>
+
+      <div class="form-group">
+        <label for="grammage">Grammage du produit :</label>
+        <input id="grammage" formControlName="grammage">
+      </div>
+
+      <div class="form-group">
+        <label for="prix">Prix du produit :</label>
+        <input id="prix" formControlName="prix">
+      </div>
+
+      <div class="form-group">
+        <label for="couleur">Couleur du produit :</label>
+        <input id="couleur" formControlName="couleur">
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" [disabled]="!produitForm.valid">Sauvegarder</button>
+        <button type="button" (click)="onClick()">Annuler</button>
+      </div>
+    </form>
+  </section>
+
+</body>

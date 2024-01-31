@@ -26,8 +26,8 @@ export class Produit {
         throw new Error('Le grammage doit être un nombre entre 10 et 1000.');
       }
 
-      if (prix < 0 || prix > 1000) {
-        throw new Error('Le prix doit être un nombre entre 0 et 1000.');
+      if (prix < 0.01 || prix > 1000) {
+        throw new Error('Le prix doit être un nombre entre 0.01 et 1000.');
       }
 
       if (couleur && (couleur.length < 3 || couleur.length > 25)) {
@@ -67,7 +67,7 @@ export class Produit {
     get couleur(): string | undefined {
       return this._couleur;
     }
-    
+
     // Setters
     set nom(value: string) {
       if (!value || value.length > 100) {
@@ -91,8 +91,8 @@ export class Produit {
     }
 
     set prix(value: number) {
-      if (value < 0 || value > 1000) {
-        throw new Error('Le prix doit être un nombre entre 0 et 1000.');
+      if (value < 0.01 || value > 1000) {
+        throw new Error('Le prix doit être un nombre entre 0.01 et 1000.');
       }
       this._prix = value;
     }
