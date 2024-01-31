@@ -1,29 +1,15 @@
-/* product-form.component.scss */
 body {
   margin: 0;
   padding: 0;
 }
 
-.body-with-background {
-  //background-image: url('../../../../assets/image/img2.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.section-formulaire {
-  margin-top: 100px;
-  width: 100%;
-}
-
-
 .custom-form {
   max-width: 400px;
   margin: 0 auto;
+  background-color: #fff; /* Arrière-plan blanc pour la carte */
+  border-radius: 8px; /* Coins arrondis pour la carte */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner un effet de profondeur */
+  padding: 20px; /* Espace autour du contenu de la carte */
 
   .form-group {
     margin-bottom: 20px;
@@ -59,30 +45,41 @@ body {
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
     }
 
     button[type="submit"] {
-      background-color: #4caf50;
+      background-color: #474F7A;
       color: #fff;
+      transition: background-color 0.3s ease;
 
       &:disabled {
         background-color: #ccc;
         cursor: not-allowed;
       }
+
+      &:not(:disabled):hover {
+        background-color: #3498db;
+      }
     }
 
     button[type="button"] {
-      background-color: #272626;
+      background-color: #ccc;
       color: #333;
+      transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #ccc;
+        background-color: #95a5a6;
       }
     }
   }
 }
 
 .title {
-  //margin-top: 4em;
   text-align: center;
+  margin-top: 3em;
+}
+
+label{
+  color: black;
 }
