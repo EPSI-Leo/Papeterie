@@ -15,47 +15,22 @@ export class ProduitService {
     this._Produits = this._httpClient.get<Produit[]>('/api/Produits');
   }
 
-  public addProduit(produit: Produit): void {
+  public addProduit(produit: Produit): Observable<any> {
     const body = JSON.stringify(produit);
-    console.log(body);
     const headers = { 'Content-Type': 'application/json' };
 
-    this._httpClient.post('/api/Produits', body, { headers })
-      .subscribe({
-        next: (response) => {
-          console.log('API Response:', response);
-        },
-        error: (error) => {
-          console.error('API Error:', error);
-        },
-      });
+    return this._httpClient.post('/api/Produits', body, { headers })
   }
 
-  public removeProduit(id: number) {
-    this._httpClient.delete(`/api/Produits/${id}`)
-      .subscribe({
-        next: (response) => {
-          console.log('API Response:', response);
-        },
-        error: (error) => {
-          console.error('API Error:', error);
-        },
-      });
+  public removeProduit(id: number): Observable<any> {
+    return this._httpClient.delete(`/api/Produits/${id}`)
   }
 
-  public updateProduit(updatedP: Produit) {
+  public updateProduit(updatedP: Produit): Observable<any> {
     const body = JSON.stringify(updatedP);
     const headers = { 'Content-Type': 'application/json' };
 
-    this._httpClient.put(`/api/Produits/${updatedP.id}`, body, { headers })
-      .subscribe({
-        next: (response) => {
-          console.log('API Response:', response);
-        },
-        error: (error) => {
-          console.error('API Error:', error);
-        },
-      });
+    return this._httpClient.put(`/api/Produits/${updatedP.id}`, body, { headers })
   }
 
   public getProduit(id: number): Observable<Produit | undefined> {

@@ -45,8 +45,16 @@ export class ProduitDetailsComponent {
   }
 
   public deleteProduit(id: number) {
-    this._produitService.removeProduit(id);
-    this._router.navigate(['/produits/list']);
+    this._produitService.removeProduit(id)
+      .subscribe({
+        next: (response) => {
+          console.log('API Response:', response);
+          this._router.navigate(['/produits/list']);
+        },
+        error: (error) => {
+          console.error('API Error:', error);
+        },
+      });
   }
 
   public shouldShowError(controlName: string) {
@@ -61,7 +69,15 @@ export class ProduitDetailsComponent {
     this.produit!.prix = parseFloat(this.produitForm.value.prix);
     this.produit!.couleur = this.produitForm.value.couleur;
 
-    this._produitService.updateProduit(this.produit!);
+    this._produitService.updateProduit(this.produit!)
+      .subscribe({
+        next: (response) => {
+          console.log('API Response:', response);
+        },
+        error: (error) => {
+          console.error('API Error:', error);
+        },
+      });
     this.isEditing = false;
   }
 }

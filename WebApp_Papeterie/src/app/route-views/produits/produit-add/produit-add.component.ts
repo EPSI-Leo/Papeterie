@@ -29,8 +29,16 @@ export class ProduitAddComponent {
       parseFloat(this.produitForm.value.prix),
       this.produitForm.value.couleur,
     );
-    this._produitService.addProduit(this.produit);
-    this._router.navigate(['/produits/list']);
+    this._produitService.addProduit(this.produit)
+      .subscribe({
+        next: (response) => {
+          console.log('API Response:', response);
+          this._router.navigate(['/produits/list']);
+        },
+        error: (error) => {
+          console.error('API Error:', error);
+        },
+      });
   }
 
   public onClick() {
