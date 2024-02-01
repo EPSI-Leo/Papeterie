@@ -1,3 +1,4 @@
+<!-- product-form.component.html -->
 
 <body class="body-with-background">
   <section class="section-formulaire">
@@ -5,29 +6,43 @@
     <h1 class="title"><u>Ajouter un produit</u></h1>
     <form [formGroup]="produitForm" (ngSubmit)="onSubmit()" class="custom-form">
       <div class="form-group">
-        <label for="name">Nom du produit :</label>
-        <input id="name" formControlName="name">
-        <div class="error-message" *ngIf="shouldShowError('name')">Le nom est requis</div>
+        <label for="nom">Nom du produit :</label>
+        <input id="nom" formControlName="nom">
+        <div class="error-message" *ngIf="shouldShowError('nom')">
+          Le nom est requis et doit avoir au maximum 100 caractères
+        </div>
       </div>
 
       <div class="form-group">
         <label for="texture">Texture du produit :</label>
         <input id="texture" formControlName="texture">
+        <div class="error-message" *ngIf="shouldShowError('texture')">
+          La texture est requise et doit avoir au maximum 50 caractères
+        </div>
       </div>
 
       <div class="form-group">
         <label for="grammage">Grammage du produit :</label>
         <input id="grammage" formControlName="grammage">
+        <div class="error-message" *ngIf="shouldShowError('grammage')">
+          Le grammage est requis et doit être un nombre entre 10 et 1000
+        </div>
       </div>
 
       <div class="form-group">
         <label for="prix">Prix du produit :</label>
         <input id="prix" formControlName="prix">
+        <div class="error-message" *ngIf="shouldShowError('prix')">
+          Le prix est requis et doit être un nombre entre 0.01 et 1000
+        </div>
       </div>
 
       <div class="form-group">
         <label for="couleur">Couleur du produit :</label>
         <input id="couleur" formControlName="couleur">
+        <div class="error-message" *ngIf="shouldShowError('couleur')">
+          La couleur doit avoir entre 3 et 25 caractères
+        </div>
       </div>
 
       <div class="form-buttons">
@@ -36,5 +51,4 @@
       </div>
     </form>
   </section>
-
 </body>
