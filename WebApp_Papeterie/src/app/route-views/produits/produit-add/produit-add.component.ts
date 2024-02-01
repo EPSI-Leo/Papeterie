@@ -23,11 +23,11 @@ export class ProduitAddComponent {
 
   public onSubmit() {
     this.produit = new Produit(
-      this.produitForm.value.nom!,
-      this.produitForm.value.texture!,
-      this.produitForm.value.grammage!,
-      this.produitForm.value.prix!,
-      this.produitForm.value.couleur!,
+      this.produitForm.value.nom,
+      this.produitForm.value.texture,
+      parseInt(this.produitForm.value.grammage),
+      parseFloat(this.produitForm.value.prix),
+      this.produitForm.value.couleur,
     );
     this._produitService.addProduit(this.produit);
     this._router.navigate(['/produits/list']);

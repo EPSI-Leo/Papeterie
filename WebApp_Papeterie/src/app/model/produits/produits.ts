@@ -1,110 +1,45 @@
 export class Produit {
-    private _id: number;
-    private _nom: string;
-    private _texture: string;
-    private _grammage: number;
-    private _prix: number;
-    private _couleur?: string;
+  public id: number;
+  public nom: string;
+  public texture: string;
+  public grammage: number;
+  public prix: number;
+  public couleur?: string;
 
-    constructor(
-      nom: string,
-      texture: string,
-      grammage: number,
-      prix: number,
-      couleur?: string
-    ) {
+  constructor(
+    nom: string,
+    texture: string,
+    grammage: number,
+    prix: number,
+    couleur?: string
+  ) {
 
-      if (!nom || nom.length > 100) {
-        throw new Error('Le nom est obligatoire et doit avoir au maximum 100 caractères.');
-      }
-
-      if (!texture || texture.length > 50) {
-        throw new Error('La texture est obligatoire et doit avoir au maximum 50 caractères.');
-      }
-
-      if (grammage < 10 || grammage > 1000) {
-        throw new Error('Le grammage doit être un nombre entre 10 et 1000.');
-      }
-
-      if (prix < 0.01 || prix > 1000) {
-        throw new Error('Le prix doit être un nombre entre 0.01 et 1000.');
-      }
-
-      if (couleur && (couleur.length < 3 || couleur.length > 25)) {
-        throw new Error('La couleur facultative doit avoir entre 3 et 25 caractères.');
-      }
-
-      // Initialisation des propriétés
-      this._id = 0;
-      this._nom = nom;
-      this._texture = texture;
-      this._grammage = grammage;
-      this._prix = prix;
-      this._couleur = couleur;
+    if (!nom || nom.length > 100) {
+      throw new Error('Le nom est obligatoire et doit avoir au maximum 100 caractères.');
     }
 
-    // Getters
-    get id(): number {
-      return this._id;
+    if (!texture || texture.length > 50) {
+      throw new Error('La texture est obligatoire et doit avoir au maximum 50 caractères.');
     }
 
-    get nom(): string {
-      return this._nom;
+    if (grammage < 10 || grammage > 1000) {
+      throw new Error('Le grammage doit être un nombre entre 10 et 1000.');
     }
 
-    get texture(): string {
-      return this._texture;
+    if (prix < 0.01 || prix > 1000) {
+      throw new Error('Le prix doit être un nombre entre 0.01 et 1000.');
     }
 
-    get grammage(): number {
-      return this._grammage;
+    if (couleur && (couleur.length < 3 || couleur.length > 25)) {
+      throw new Error('La couleur facultative doit avoir entre 3 et 25 caractères.');
     }
 
-    get prix(): number {
-      return this._prix;
-    }
-
-    get couleur(): string | undefined {
-      return this._couleur;
-    }
-
-    // Setters
-    set id(value: number) {
-      this._id = value;
-    }
-
-    set nom(value: string) {
-      if (!value || value.length > 100) {
-        throw new Error('Le nom est obligatoire et doit avoir au maximum 100 caractères.');
-      }
-      this._nom = value;
-    }
-
-    set texture(value: string) {
-      if (!value || value.length > 50) {
-        throw new Error('La texture est obligatoire et doit avoir au maximum 50 caractères.');
-      }
-      this._texture = value;
-    }
-
-    set grammage(value: number) {
-      if (value < 10 || value > 1000) {
-        throw new Error('Le grammage doit être un nombre entre 10 et 1000.');
-      }
-      this._grammage = value;
-    }
-
-    set prix(value: number) {
-      if (value < 0.01 || value > 1000) {
-        throw new Error('Le prix doit être un nombre entre 0.01 et 1000.');
-      }
-      this._prix = value;
-    }
-
-    set couleur(value: string | undefined) {
-      if (value && (value.length < 3 || value.length > 25)) {
-        throw new Error('La couleur facultative doit avoir entre 3 et 25 caractères.');
-      }
-      this._couleur = value;
-    }
+    // Initialisation des propriétés
+    this.id = 0;
+    this.nom = nom;
+    this.texture = texture;
+    this.grammage = grammage;
+    this.prix = prix;
+    this.couleur = couleur;
   }
+}

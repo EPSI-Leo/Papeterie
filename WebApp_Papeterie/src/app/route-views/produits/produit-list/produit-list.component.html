@@ -2,7 +2,7 @@
 
 <div class="content">
   <ul>
-    <li *ngFor="let p of getProduits()" (click)="onClick(p)">
+    <li *ngFor="let p of getProduits() | async" (click)="onClick(p)">
        {{ p.id }} - {{ p.nom }} | {{ p.prix }} €
     </li>
   </ul>

@@ -1,6 +1,7 @@
 import { Produit } from './../model/produits/produits';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,55 +9,60 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProduitService {
 
-  private _Produits: Produit[] = [];
-  private _nextId: number = 1; // Incrementing ID
+  private _Produits: Observable<Produit[]>;
 
   public constructor(private _httpClient: HttpClient) {
-    this.loadProduitsData();
-  }
-
-  private loadProduitsData(): void {
-    this._httpClient.get<Produit[]>('assets/produit.json').subscribe({
-      next: (data: Produit[]) => {
-        this._Produits = data;
-        this.updateNextId();
-      },
-      error: (error) => {
-        console.error('Error loading produit.json', error);
-      }
-    });
-  }
-
-  private updateNextId(): void {
-    const maxId = Math.max(...this._Produits.map(produit => produit.id), 0);
-    this._nextId = maxId + 1;
+    this._Produits = this._httpClient.get<Produit[]>('/api/Produits');
   }
 
   public addProduit(produit: Produit): void {
-    produit.id = this._nextId++;
-    this._Produits.push(produit);
+    const body = JSON.stringify(produit);
+    console.log(body);
+    const headers = { 'Content-Type': 'application/json' };
+
+    this._httpClient.post('/api/Produits', body, { headers })
+      .subscribe({
+        next: (response) => {
+          console.log('API Response:', response);
+        },
+        error: (error) => {
+          console.error('API Error:', error);
+        },
+      });
   }
 
-  public removeProduit(p: Produit){
-
+  public removeProduit(id: number) {
+    this._httpClient.delete(`/api/Produits/${id}`)
+      .subscribe({
+        next: (response) => {
+          console.log('API Response:', response);
+        },
+        error: (error) => {
+          console.error('API Error:', error);
+        },
+      });
   }
 
-  public updateProduit(updatedP: Produit){
-    const index = this._Produits.findIndex((p) => p.id === updatedP.id);
+  public updateProduit(updatedP: Produit) {
+    const body = JSON.stringify(updatedP);
+    const headers = { 'Content-Type': 'application/json' };
 
-    if (index !== -1) {
-      this._Produits[index] = updatedP;
-    } else {
-      console.error(`Produit avec l'ID ${updatedP.id} introuvable.`);
-    }
-
+    this._httpClient.put(`/api/Produits/${updatedP.id}`, body, { headers })
+      .subscribe({
+        next: (response) => {
+          console.log('API Response:', response);
+        },
+        error: (error) => {
+          console.error('API Error:', error);
+        },
+      });
   }
 
-  public getProduit(id: number) : Produit | undefined {
-    return this._Produits.find(produit => produit.id === id);
+  public getProduit(id: number): Observable<Produit | undefined> {
+    return this._httpClient.get<Produit>(`/api/Produits/${id}`);
   }
 
-  public getProduits(){
+  public getProduits(): Observable<Produit[]> {
     return this._Produits;
   }
 }

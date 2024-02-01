@@ -10,7 +10,10 @@ import { Produit } from 'src/app/model/produits/produits';
 })
 export class ProduitListComponent {
 
-  public constructor(private _produitService: ProduitService, private _router: Router) { }
+  public constructor(
+    private _produitService: ProduitService,
+    private _router: Router,
+  ) { }
 
   public getProduits(){
     return this._produitService.getProduits();

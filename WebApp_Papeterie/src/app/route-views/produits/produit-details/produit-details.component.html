@@ -7,6 +7,7 @@
     <p>Prix: {{ produit.prix }}</p>
     <p>Couleur: {{ produit.couleur }}</p>
     <button (click)="onClick()">Modifier le produit</button>
+    <button (click)="deleteProduit(produit.id)">Supprimer ce produit</button>
   </div>
   <div *ngIf="!produit" class="product-not-found">Produit introuvable</div>
 
