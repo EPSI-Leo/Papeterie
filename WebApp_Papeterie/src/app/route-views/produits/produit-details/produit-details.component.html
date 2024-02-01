@@ -1,13 +1,13 @@
 <div class="container">
   <div *ngIf="produit && !isEditing" class="content product-details">
     <h1 class="title-details"><u>Détails du produit</u></h1>
-    <h2>{{ produit.id }} {{ produit.nom }}</h2>
-    <p>Texture: {{ produit.texture }}</p>
-    <p>Grammge: {{ produit.grammage }}</p>
-    <p>Prix: {{ produit.prix }}</p>
-    <p>Couleur: {{ produit.couleur }}</p>
-    <button (click)="onClick()">Modifier le produit</button>
-    <button (click)="deleteProduit(produit.id)">Supprimer ce produit</button>
+    <h2>{{ produit.id }} - {{ produit.nom }}</h2>
+    <p><b>Texture:</b> {{ produit.texture }}</p>
+    <p><b>Grammage: </b>{{ produit.grammage }}</p>
+    <p><b>Prix: </b>{{ produit.prix }}</p>
+    <p><b>Couleur: </b>{{ produit.couleur }}</p>
+    <button (click)="onClick()" class="btn-space">Modifier le produit</button>
+    <button (click)="deleteProduit(produit.id)" class="btn-suppr">Supprimer ce produit</button>
   </div>
   <div *ngIf="!produit" class="product-not-found">Produit introuvable</div>
 
