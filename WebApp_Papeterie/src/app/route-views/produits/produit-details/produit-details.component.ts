@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Produit } from 'src/app/model/produits/produits';
+import { ProduitFormService } from 'src/app/services/produit-form.service';
 import { ProduitService } from 'src/app/services/produits.service';
 
 @Component({
@@ -12,20 +13,14 @@ import { ProduitService } from 'src/app/services/produits.service';
 export class ProduitDetailsComponent {
 
   public produit: Produit | undefined;
+  public produitForm: FormGroup;
   public isEditing = false;
 
   public constructor(
     private _activeRoute: ActivatedRoute,
     private _produitService: ProduitService,
-  ) { }
-
-  public produitForm = new FormGroup({
-    nom: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    texture: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    grammage: new FormControl(null, [Validators.required, Validators.min(10), Validators.max(1000)]) as FormControl<number | null>,
-    prix: new FormControl(null, [Validators.required, Validators.min(0.01), Validators.max(1000)]) as FormControl<number | null>,
-    couleur: new FormControl('', [Validators.minLength(3), Validators.maxLength(25)])
-  });
+    private productFormService: ProduitFormService,
+  ) { this.produitForm = this.productFormService.createProduitForm(); }
 
   ngOnInit(): void {
     this._activeRoute.params.subscribe(params => {
@@ -33,11 +28,11 @@ export class ProduitDetailsComponent {
       this.produit = this._produitService.getProduit(produitId);
     });
     this.produitForm.setValue({
-      nom: this.produit?.nom!,
-      texture: this.produit?.texture!,
-      grammage: this.produit?.grammage!,
-      prix: this.produit?.prix!,
-      couleur: this.produit?.couleur!,
+      nom: this.produit?.nom,
+      texture: this.produit?.texture,
+      grammage: this.produit?.grammage,
+      prix: this.produit?.prix,
+      couleur: this.produit?.couleur,
     })
   }
 
@@ -51,14 +46,13 @@ export class ProduitDetailsComponent {
   }
 
   public onSubmit() {
-    this.produit!.nom = this.produitForm.value.nom!;
-    this.produit!.texture = this.produitForm.value.texture!;
-    this.produit!.grammage = this.produitForm.value.grammage!;
-    this.produit!.prix = this.produitForm.value.prix!;
-    this.produit!.couleur = this.produitForm.value.couleur!;
+    this.produit!.nom = this.produitForm.value.nom;
+    this.produit!.texture = this.produitForm.value.texture;
+    this.produit!.grammage = this.produitForm.value.grammage;
+    this.produit!.prix = this.produitForm.value.prix;
+    this.produit!.couleur = this.produitForm.value.couleur;
 
     this._produitService.updateProduit(this.produit!);
     this.isEditing = false;
   }
 }
-// TODO : meilleur typage

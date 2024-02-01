@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Produit } from 'src/app/model/produits/produits';
+import { ProduitFormService } from 'src/app/services/produit-form.service';
 import { ProduitService } from 'src/app/services/produits.service';
 
 @Component({
@@ -12,16 +13,13 @@ import { ProduitService } from 'src/app/services/produits.service';
 export class ProduitAddComponent {
 
   public produit: Produit | undefined;
+  public produitForm: FormGroup;
 
-  public constructor(private _produitService: ProduitService, private _router: Router) { }
-
-  public produitForm = new FormGroup({
-    nom: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    texture: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    grammage: new FormControl(null, [Validators.required, Validators.min(10), Validators.max(1000)]),
-    prix: new FormControl(null, [Validators.required, Validators.min(0.01), Validators.max(1000)]),
-    couleur: new FormControl('', [Validators.minLength(3), Validators.maxLength(25)])
-  });
+  public constructor(
+    private _produitService: ProduitService,
+    private _router: Router,
+    private productFormService: ProduitFormService,
+  ) { this.produitForm = this.productFormService.createProduitForm(); }
 
   public onSubmit() {
     this.produit = new Produit(
