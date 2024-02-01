@@ -40,7 +40,7 @@ namespace API_Papeterie.Controllers
 
         // POST: api/Produits
         [HttpPost]
-        public IActionResult Post([FromBody] Produit produit)
+        public IActionResult Post([FromBody] Produit produit) //
         {
             _context.Produits.Add(produit);
             _context.SaveChanges();
