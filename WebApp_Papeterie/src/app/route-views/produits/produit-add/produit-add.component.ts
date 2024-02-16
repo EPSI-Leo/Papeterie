@@ -14,7 +14,9 @@ export class ProduitAddComponent {
 
   public produit: Produit | undefined;
   public produitForm: FormGroup;
-
+  /// Commentaire Thibaut : on ne devrait pas avoir d'appel de service ici
+  /// la gestion de l'initialisation du formulaire est de la responsabilité du composant produit-add et pas du service
+  /// le formulaire étant étroitement lié à l'html
   public constructor(
     private _produitService: ProduitService,
     private _router: Router,

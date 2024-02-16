@@ -63,6 +63,7 @@ export class ProduitDetailsComponent {
   }
 
   public onSubmit() {
+    //Commentaire Thibaut : habituellement, on recrée un nouveau produit à cette étape
     this.produit!.nom = this.produitForm.value.nom;
     this.produit!.texture = this.produitForm.value.texture;
     this.produit!.grammage = parseInt(this.produitForm.value.grammage);

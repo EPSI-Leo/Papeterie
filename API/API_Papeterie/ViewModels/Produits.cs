@@ -9,6 +9,13 @@
         private decimal _prix;
         private string? _couleur;
 
+/// <summary>
+/// Commentaire Thibaut
+/// En csharp, on a plutôt l'habitude de travailler en ne spécifiant pas les variables privées
+/// public string MaVariable {get;set;} va générer automatiquement (mais de manière invisible pour le dev) la variable privée _MaVariable 
+/// </summary>
+
+        
         public int Id
         {
             get { return _id; }

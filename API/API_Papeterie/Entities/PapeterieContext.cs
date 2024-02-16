@@ -26,7 +26,8 @@ public partial class PapeterieContext : DbContext
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("produits");
-
+            // il vaut mieux utiliser les annotations dans la définition de la classe [MaxLength(255)] juste au dessus de la propriété consernée
+            // il est possible de définir plusieurs annotations, on le verra dans le cours correspondant
             entity.Property(e => e.Couleur).HasMaxLength(255);
             entity.Property(e => e.Nom).HasMaxLength(255);
             entity.Property(e => e.Prix).HasPrecision(10);
