@@ -5,22 +5,24 @@ services:
     image: mysql:8.3
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 
       MYSQL_DATABASE: papeterie
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
-    ports:
-      - "3306:3306"
+      MYSQL_USER: moi
+      MYSQL_PASSWORD: moi123
+      MYSQL_ROOT_PASSWORD: aaaaaaaa
     volumes:
       - /c/dev/bdd_papeterie:/docker-entrypoint-initdb.d
 
   webapp:
     build: ./WebApp_Papeterie
     ports:
-      - "80:80"
+      - "3333:80"
+    depends_on:
+      - api
 
   api:
     build: ./API
     ports:
       - "8080:8080"
       - "8081:8081"
+    depends_on:
+      - db
