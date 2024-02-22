@@ -26,5 +26,5 @@ jobs:
           context: .
           push: true
           tags: |
-            cheesenaan/api-papeterie:latest
-            cheesenaan/webapp-papeterie:latest
+            meynierleo/api-papeterie:latest
+            meynierleo/webapp-papeterie:latest
