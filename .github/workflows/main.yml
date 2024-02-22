@@ -15,8 +15,8 @@ jobs:
 
     - name: Build API Docker image
       run: |
-        docker build -t CheeseNaan/api-papeterie:latest -f API/Dockerfile .
-        docker build -t CheeseNaan/webapp-papeterie:latest -f WebApp_Papeterie/Dockerfile .
+        docker build -t cheesenaan/api-papeterie:latest -f API/Dockerfile .
+        docker build -t cheesenaan/webapp-papeterie:latest -f WebApp_Papeterie/Dockerfile .
     - name: Login to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -25,5 +25,5 @@ jobs:
 
     - name: Push Docker images to Docker Hub
       run: |
-        docker push CheeseNaan/api-papeterie:latest
-        docker push CheeseNaan/webapp-papeterie:latest
+        docker push cheesenaan/api-papeterie:latest
+        docker push cheesenaan/webapp-papeterie:latest
