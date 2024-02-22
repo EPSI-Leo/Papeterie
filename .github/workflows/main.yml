@@ -20,11 +20,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build and push
+      - name: Build and push API
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./API
           push: true
-          tags: |
-            meynierleo/api-papeterie:latest
-            meynierleo/webapp-papeterie:latest
+          tags: meynierleo/api-papeterie:latest
+      - name: Build and push WebApp
+        uses: docker/build-push-action@v5
+        with:
+          context: ./WebApp_Papeterie
+          push: true
+          tags: meynierleo/webapp-papeterie:latest
