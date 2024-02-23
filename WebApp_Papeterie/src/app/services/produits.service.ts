@@ -16,6 +16,7 @@ export class ProduitService {
   }
 
   public addProduit(produit: Produit): Observable<any> {
+    this.transformProduit(produit);
     const body = JSON.stringify(produit);
     const headers = { 'Content-Type': 'application/json' };
 
@@ -27,6 +28,7 @@ export class ProduitService {
   }
 
   public updateProduit(updatedP: Produit): Observable<any> {
+    this.transformProduit(updatedP);
     const body = JSON.stringify(updatedP);
     const headers = { 'Content-Type': 'application/json' };
 
@@ -39,5 +41,11 @@ export class ProduitService {
 
   public getProduits(): Observable<Produit[]> {
     return this._Produits;
+  }
+
+  private transformProduit(produit: Produit): void {
+    if (produit.couleur === "") {
+      produit.couleur = undefined;
+    }
   }
 }

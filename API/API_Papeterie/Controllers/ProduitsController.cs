@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using API_Papeterie.Entities;  // Ajoutez le namespace approprié
+using API_Papeterie.data;
+using API_Papeterie.models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +12,9 @@ namespace API_Papeterie.Controllers
     [ApiController]
     public class ProduitsController : ControllerBase
     {
-        private readonly PapeterieContext _context;
+        private readonly PapeterieDbContext _context;
 
-        public ProduitsController(PapeterieContext context)
+        public ProduitsController(PapeterieDbContext context)
         {
             _context = context;
         }
@@ -64,7 +65,7 @@ namespace API_Papeterie.Controllers
             existingProduit.Couleur = produit.Couleur;
 
             _context.SaveChanges();
-            return Ok("Produit updated successfully");
+            return Ok(produit);
         }
 
         // DELETE: api/Produits/5
@@ -79,7 +80,7 @@ namespace API_Papeterie.Controllers
 
             _context.Produits.Remove(produit);
             _context.SaveChanges();
-            return Ok("Produit deleted successfully");
+            return Ok(produit);
         }
 
         //test db connection

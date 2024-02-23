@@ -5,7 +5,7 @@
 namespace API_Papeterie.Migrations
 {
     /// <inheritdoc />
-    public partial class init_db : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
