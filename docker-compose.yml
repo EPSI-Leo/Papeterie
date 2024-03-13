@@ -1,26 +1,26 @@
 version: '3'
 
 services:
-  db:
-    image: mysql:8.3
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: 
-      MYSQL_DATABASE: papeterie
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
-    ports:
-      - "3306:3306"
-    volumes:
-      - /c/dev/bdd_papeterie:/docker-entrypoint-initdb.d
+  # db:
+  #   image: mysql:8.3
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD:
+  #     MYSQL_DATABASE: papeterie
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD:
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - /c/dev/bdd_papeterie:/docker-entrypoint-initdb.d
 
   webapp:
     build: ./WebApp_Papeterie
     ports:
-      - "80:80"
+      - "3333:80"
 
-  api:
-    build: ./API
-    ports:
-      - "8080:8080"
-      - "8081:8081"
+  # api:
+  #   build: ./API
+  #   ports:
+  #     - "8080:8080"
+  #     - "8081:8081"
