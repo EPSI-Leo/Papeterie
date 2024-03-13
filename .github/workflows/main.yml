@@ -1,0 +1,45 @@
+name: Docker Build and Publish
+
+on:
+  push:
+    branches:
+      - DevOps
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run Unit Tests
+        run: |
+          cd WebApp_Papeterie
+          npm install
+          npm test
+  docker:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push API
+        uses: docker/build-push-action@v5
+        with:
+          context: ./API
+          push: true
+          tags: meynierleo/api-papeterie:latest
+      - name: Build and push WebApp
+        uses: docker/build-push-action@v5
+        with:
+          context: ./WebApp_Papeterie
+          push: true
+          tags: meynierleo/webapp-papeterie:latest
