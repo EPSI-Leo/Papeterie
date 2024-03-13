@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProduitListComponent } from './produit-list.component';
-/*
+
 describe('ProduitListComponent', () => {
   let component: ProduitListComponent;
   let fixture: ComponentFixture<ProduitListComponent>;
@@ -14,6 +14,8 @@ describe('ProduitListComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+  it(`zefze`, () => {
+    expect(1).toEqual(2);
+  });
 
-
-}); */
+});
