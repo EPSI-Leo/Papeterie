@@ -1,8 +1,8 @@
 {
-    "/api": {
-      "target": "http://angular_project-api-1:8080",
-      "secure": false,
-      "changeOrigin": true,
-      "logLevel": "debug"
-    }
+  "/api": {
+    "target": "http://angular_project-api-1:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
+}

@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: moi123
       MYSQL_ROOT_PASSWORD: aaaaaaaa
     volumes:
-      - /c/dev/bdd_papeterie:/docker-entrypoint-initdb.d
+      - ${VOLUME_DB}:/docker-entrypoint-initdb.d
 
   webapp:
     build: ./WebApp_Papeterie
