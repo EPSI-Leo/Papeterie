@@ -5,6 +5,9 @@ services:
     build: ./proxy
     ports:
       - "80:80"
+    networks:
+      - frontend
+      - backend
 
   db:
     image: mysql:8.3
@@ -17,13 +20,13 @@ services:
     volumes:
       - ${VOLUME_DB}:/docker-entrypoint-initdb.d
       - volume_papeterie:/var/lib/mysql
-      
-  adminer:
-    image: adminer
-    restart: always
+    networks:
+      - backend
 
-  api:
-    build: ./API
+  api_papeterie:
+    build:
+      dockerfile: ./API_Papeterie/Dockerfile
+      context: ./API
     environment:
       - DB_SERVER=${DB_SERVER}
       - DB_PORT=${DB_PORT}
@@ -32,8 +35,21 @@ services:
       - DB_NAME=${DB_NAME}
     depends_on:
       - db
-    ports:
-      - 8080:8080
+      - proxy
+    networks:
+      - frontend
+      - backend
+
+  webapp:
+    build: ./WebApp_Papeterie
+    depends_on:
+      - api_papeterie
+    networks:
+      - frontend
 
 volumes:
   volume_papeterie:
+
+networks:
+  frontend:
+  backend:
