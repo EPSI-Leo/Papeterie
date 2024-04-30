@@ -16,6 +16,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - ${VOLUME_DB}:/docker-entrypoint-initdb.d
+      - volume_papeterie:/var/lib/mysql
       
   adminer:
     image: adminer
