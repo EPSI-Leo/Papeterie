@@ -4,7 +4,11 @@ services:
   proxy:
     build: ./proxy
     ports:
-      - 80:80
+      - 1100:80
+    volumes:
+    - ./proxy/default.conf:/etc/nginx/conf.d/default.conf
+    - ./proxy/logs/:/var/log/nginx
+    - ./proxy/proxy.conf:/etc/nginx/includes/proxy.conf
     networks:
       - frontend
       - backend
