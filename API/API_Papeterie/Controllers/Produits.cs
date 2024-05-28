@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using API_Papeterie.Entities;  // Ajoutez le namespace approprié
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace API_Papeterie.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProduitsController : ControllerBase
     {
         private readonly PapeterieContext _context;

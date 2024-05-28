@@ -26,6 +26,14 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7181;http://localhost:5186",
       "environmentVariables": {
+        "DB_PORT": "3306",
+        "DB_USER": "moi",
+        "DB_SERVER": "localhost",
+        "DB_NAME": "papeterie",
+        "DB_PASSWORD": "moi123",
+        "App_SwaggerAuthority": "http://localhost:8092/realms/webapp",
+        "App_Authority": "http://localhost:8092/realms/webapp",
+        "App_ClientId": "client-papeterie",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
