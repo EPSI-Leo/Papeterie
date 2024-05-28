@@ -57,7 +57,7 @@ services:
     command:
       - start-dev
     volumes:
-      - ./volumes/keyckloak:/opt/keycloak/data/h2
+      - ./volumes/keycloak:/opt/keycloak/data/h2
     ports:
     - 8092:8080
 
