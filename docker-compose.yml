@@ -21,6 +21,8 @@ services:
     volumes:
       - ${VOLUME_DB}:/docker-entrypoint-initdb.d
       - volume_papeterie:/var/lib/mysql
+    ports:
+      - 3306:3306
 
   api_papeterie:
     build:
@@ -32,11 +34,11 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
-      - App_Authority=http://keycloak:8080/realms/webapp
-      - App_ClientId=client-papeterie
-      - App_SwaggerAuthority=http://localhost:8092/realms/webapp
+      - App_Authority=${APP_AUTHORITY}
+      - App_ClientId=${APP_CLIENTID}
+      - App_SwaggerAuthority=${APP_SWAGGERAUTHORITY}
     ports:
-      - 3306:3306
+      - 2200:8080
     depends_on:
       - db
       - proxy
@@ -53,7 +55,11 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: myadminpwd
       KC_PROXY: edge
+      KC_PROXY_MODE: edge
       KC_HOSTNAME_STRICT: false
+      KC_HOSTNAME_PATH: /auth
+      KC_HOSTNAME_URL: http://localhost:1100/auth
+      KC_HOSTNAME_ADMIN_URL: http://localhost:1100/auth
     command:
       - start-dev
     volumes:
