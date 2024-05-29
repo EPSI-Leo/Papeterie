@@ -6,14 +6,17 @@ import { ContactComponent } from './route-views/contact/contact.component';
 import { ProduitListComponent } from './route-views/produits/produit-list/produit-list.component';
 import { ProduitAddComponent } from './route-views/produits/produit-add/produit-add.component';
 import { ProduitDetailsComponent } from './route-views/produits/produit-details/produit-details.component';
+import { AuthComponent } from './route-views/auth/auth.component';
 
 const routes: Routes = [
-  { path: '', component: AcceuilComponent },
+  { path: 'accueil', component: AcceuilComponent },
+  { path: 'postlogin', component: AcceuilComponent },
   { path: 'produits/list', component: ProduitListComponent},
   { path: 'produits/add', component: ProduitAddComponent},
   { path: 'produits/details/:id', component: ProduitDetailsComponent},
   { path: 'produits', redirectTo: 'produits/list' },
   { path: 'contact', component: ContactComponent },
+  { path: '', component: AuthComponent },
   { path: '**', redirectTo: ''},
 ];
 
