@@ -9,15 +9,15 @@ import { ProduitDetailsComponent } from './route-views/produits/produit-details/
 import { AuthComponent } from './route-views/auth/auth.component';
 
 const routes: Routes = [
-  { path: 'accueil', component: AcceuilComponent },
+  { path: '', component: AuthComponent },
   { path: 'postlogin', component: AcceuilComponent },
-  { path: 'produits/list', component: ProduitListComponent},
-  { path: 'produits/add', component: ProduitAddComponent},
-  { path: 'produits/details/:id', component: ProduitDetailsComponent},
+  { path: 'accueil', component: AcceuilComponent },
+  { path: 'produits/list', component: ProduitListComponent },
+  { path: 'produits/add', component: ProduitAddComponent },
+  { path: 'produits/details/:id', component: ProduitDetailsComponent },
   { path: 'produits', redirectTo: 'produits/list' },
   { path: 'contact', component: ContactComponent },
-  { path: '', component: AuthComponent },
-  { path: '**', redirectTo: ''},
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

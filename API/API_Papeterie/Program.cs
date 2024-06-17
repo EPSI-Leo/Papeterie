@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using MySql.EntityFrameworkCore.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
-
+using System.Text.RegularExpressions;
+using API_Papeterie.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var confBuilder = new ConfigurationBuilder();
@@ -12,14 +13,9 @@ confBuilder.AddEnvironmentVariables();
 var configuration = confBuilder.Build();
 builder.Services.AddHttpClient();
 
-string connectionString = configuration.GetConnectionString("DefaultConnection")
-    .Replace("${DB_SERVER}", configuration["DB_SERVER"])
-    .Replace("${DB_PORT}", configuration["DB_PORT"])
-    .Replace("${DB_USER}", configuration["DB_USER"])
-    .Replace("${DB_PASSWORD}", configuration["DB_PASSWORD"])
-    .Replace("${DB_NAME}", configuration["DB_NAME"]);
-// Add services to the container.
+string connectionString = ConnectionStringHelper.BuildConnectionString(configuration, "DefaultConnection");
 
+// Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

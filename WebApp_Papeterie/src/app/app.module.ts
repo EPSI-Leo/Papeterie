@@ -34,11 +34,9 @@ import { AuthComponent } from './route-views/auth/auth.component';
     AuthModule.forRoot({
       config: {
         authority: 'http://localhost:1100/auth/realms/webapp',
-        // redirectUrl: window.location.origin,
-        redirectUrl: window.location.origin + '/accueil',
+        redirectUrl: window.location.origin + '/postlogin',
         postLogoutRedirectUri: window.location.origin + '/logouterror',
         clientId: 'client-papeterie',
-        // scope: 'openid profile email',
         scope: 'openid profile email offline_access',
         responseType: 'code',
         silentRenew: true,
