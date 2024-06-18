@@ -1,11 +1,18 @@
 .content {
   font-family: 'Arial', sans-serif;
-  background-color: #f8f8f8;
-  border-radius: 8px;
+  background-color: #f8f8f832;
+  border-radius: 40px;
   padding: 40px;
   max-width: 600px;
+  max-height: 400px;
   margin: auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  height: 100vh; // Pour centrer verticalement
 
   //margin-top: 3em;
   //padding-top: 3em;
@@ -50,7 +57,37 @@ button:hover {
   background-color: #C7C8CC; /* Une nuance plus foncée pour l'effet hover */
 }
 
-.title{
-  margin-top: 4em;
+.title {
+  margin-top: 2em; // Espace au-dessus du titre
+  margin-bottom: 1em; // Espace en dessous du titre
   text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+}
+/* When you change the amount of characters in the h1, you have to change
+the with: 14ch and  steps(14, end), if there is 14 characters, put 14,
+if there is 20 put 20 */
+.animation {
+  font: bold 200% Consolas, Monaco, monospace;
+  border-right: .1em solid black;
+  width: 25.20ch;
+  color:#C7C8CC;
+  margin: 2em 2em;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-animation: typing 0.8s steps(1000, end),
+	           blink-caret .5s step-end infinite alternate;
 }
