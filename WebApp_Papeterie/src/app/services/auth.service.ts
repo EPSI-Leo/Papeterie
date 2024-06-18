@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { Observable, map } from 'rxjs';
+import { UserInfo } from '../model/auth/userInfo';
 
 @Injectable({
   providedIn: 'root',
@@ -8,19 +9,25 @@ import { Observable, map } from 'rxjs';
 
 export class AuthService {
 
-  public constructor(private oidcSecurityService: OidcSecurityService) {}
+  public constructor(private oidcSecurityService: OidcSecurityService) { }
 
   public login(): void {
     this.oidcSecurityService.authorize();
   }
 
-  public logout(): void {
-    this.oidcSecurityService.logoff().subscribe((result) => console.log(result));;
+  public logout(): Observable<any> {
+    return this.oidcSecurityService.logoff();
   }
 
   public isAuthenticated(): Observable<boolean> {
     return this.oidcSecurityService.isAuthenticated$.pipe(
       map((authResult) => authResult.isAuthenticated)
+    );
+  }
+
+  public hasRole(role: string): Observable<boolean> {
+    return this.oidcSecurityService.userData$.pipe(
+      map(data => (data?.userData as UserInfo)?.roles?.includes(role) ?? false)
     );
   }
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ProduitService } from 'src/app/services/produits.service';
 import { Router } from '@angular/router';
 import { Produit } from 'src/app/model/produits/produits';
+import { AuthService } from 'src/app/services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-produit-list',
@@ -9,13 +11,18 @@ import { Produit } from 'src/app/model/produits/produits';
   styleUrls: ['./produit-list.component.scss']
 })
 export class ProduitListComponent {
+  canAddProduct: Observable<boolean>;
 
   public constructor(
     private _produitService: ProduitService,
+    private _authService: AuthService,
     private _router: Router,
-  ) { }
+  ) {
+    this.canAddProduct = this._authService.hasRole('provider');
+  }
 
-  public getProduits(){
+
+  public getProduits() {
     return this._produitService.getProduits();
   }
 

@@ -7,5 +7,5 @@
     </li>
   </ul>
 
-  <button (click)="goToAdd()">Ajouter un produit</button>
+  <button *ngIf="canAddProduct | async" (click)="goToAdd()">Ajouter un produit</button>
 </div>

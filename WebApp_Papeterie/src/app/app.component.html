@@ -1,17 +1,15 @@
-<div class='container'>
+<div *ngIf="isAuthenticated | async" class="container">
   <div id="navigation-bar">
-   <!-- <img id="logo" src="chemin/vers/votre/logo.png" alt="Logo"> -->
+    <!-- <img id="logo" src="chemin/vers/votre/logo.png" alt="Logo"> -->
     <nav>
       <ul>
-      <li><a routerLink="accueil">Accueil</a></li>
-      <li><a routerLink="produits/list">Produits</a></li>
-      <li><a routerLink="contact">Contact</a></li>
-    </ul>
+        <li><a routerLink="accueil">Accueil</a></li>
+        <li><a routerLink="produits/list">Produits</a></li>
+        <li><a routerLink="contact">Contact</a></li>
+      </ul>
     </nav>
+    <button (click)="logout()">Logout</button>
   </div>
 </div>
 
 <router-outlet></router-outlet>
-
-
-

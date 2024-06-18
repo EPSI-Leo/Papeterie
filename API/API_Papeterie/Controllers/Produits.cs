@@ -42,6 +42,7 @@ namespace API_Papeterie.Controllers
 
         // POST: api/Produits
         [HttpPost]
+        [Authorize(Roles = "provider")]
         public IActionResult Post([FromBody] Produit produit) //
         {
             _context.Produits.Add(produit);
@@ -51,6 +52,7 @@ namespace API_Papeterie.Controllers
 
         // PUT: api/Produits/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "provider")]
         public IActionResult Put(int id, [FromBody] Produit produit)
         {
             var existingProduit = _context.Produits.Find(id);
@@ -71,6 +73,7 @@ namespace API_Papeterie.Controllers
 
         // DELETE: api/Produits/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "provider")]
         public IActionResult Delete(int id)
         {
             var produit = _context.Produits.Find(id);

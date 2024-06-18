@@ -21,8 +21,8 @@ services:
     volumes:
       - ${VOLUME_DB}:/docker-entrypoint-initdb.d
       - volume_papeterie:/var/lib/mysql
-    ports:
-      - 3306:3306
+    # ports:
+    #   - 3306:3306
 
   api_papeterie:
     build:
@@ -37,8 +37,8 @@ services:
       - App_Authority=${APP_AUTHORITY}
       - App_ClientId=${APP_CLIENTID}
       - App_SwaggerAuthority=${APP_SWAGGERAUTHORITY}
-    ports:
-      - 2200:8080
+    # ports:
+    #   - 2200:8080
     depends_on:
       - db
       - proxy
@@ -64,8 +64,8 @@ services:
       - start-dev
     volumes:
       - ./volumes/keycloak:/opt/keycloak/data/h2
-    ports:
-    - 8092:8080
+    # ports:
+    # - 8092:8080
 
 volumes:
   volume_papeterie:
