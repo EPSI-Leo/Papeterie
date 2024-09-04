@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   proxy:
@@ -6,9 +6,9 @@ services:
     ports:
       - 1100:80
     volumes:
-    - ./proxy/default.conf:/etc/nginx/conf.d/default.conf
-    - ./proxy/logs/:/var/log/nginx
-    - ./proxy/proxy.conf:/etc/nginx/includes/proxy.conf
+      - ./proxy/default.conf:/etc/nginx/conf.d/default.conf
+      - ./proxy/logs/:/var/log/nginx
+      - ./proxy/proxy.conf:/etc/nginx/includes/proxy.conf
 
   db:
     image: mysql:8.3
@@ -29,21 +29,21 @@ services:
       dockerfile: ./API_Papeterie/Dockerfile
       context: ./API
     environment:
-      - DB_SERVER=${DB_SERVER}
-      - DB_PORT=${DB_PORT}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-      - App_Authority=${APP_AUTHORITY}
-      - App_ClientId=${APP_CLIENTID}
-      - App_SwaggerAuthority=${APP_SWAGGERAUTHORITY}
+      DB_SERVER: ${DB_SERVER}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      App_Authority: ${APP_AUTHORITY}
+      App_ClientId: ${APP_CLIENTID}
+      App_SwaggerAuthority: ${APP_SWAGGERAUTHORITY}
     # ports:
     #   - 2200:8080
     depends_on:
       - db
       - proxy
 
-  webapp: 
+  webapp:
     build: ./WebApp_Papeterie
     depends_on:
       - api_papeterie
@@ -52,8 +52,8 @@ services:
     image: quay.io/keycloak/keycloak:22.0.5
     environment:
       KEYCLOAK_LOG_LEVEL: DEBUG
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: myadminpwd
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
       KC_PROXY: edge
       KC_PROXY_MODE: edge
       KC_HOSTNAME_STRICT: false
@@ -65,7 +65,7 @@ services:
     volumes:
       - ./volumes/keycloak:/opt/keycloak/data/h2
     # ports:
-    # - 8092:8080
+    #   - 8092:8080
 
 volumes:
   volume_papeterie:

@@ -4,11 +4,25 @@ Leo Meynier
 Samir Foul
 Alxis Contamin
 
-## Note : 
-C'est vraiment un très bon travail, tout à fait professionnel.
-Evidemment, le sujet est simple, mais ce qui a été mis en place est très propre.
+## Setup :
 
-J'ai fait quelques commentaires dans le code (il faudrait que je regarde si il y a des fonctionnalités de code review dans 
-github pour avoir une démarche un peu plus pro) => je regarderai ça pour le prochain cours.
+Créer un .env avec:
 
-C'est évidemment un 20 pour angular et un 20 pour la partie webapi.
+DB_SERVER=nom_du_conteneur_de_la_db
+DB_PORT=3306
+DB_USER=user
+DB_PASSWORD=password
+DB_ROOT_PASSWORD=password
+DB_NAME=papeterie
+VOLUME_DB=./
+APP_AUTHORITY=http://keycloak:8080/realms/webapp
+APP_CLIENTID=client-papeterie
+APP_SWAGGERAUTHORITY=http://localhost:1100/auth/realms/webapp
+KEYCLOAK_ADMIN=admin
+KEYCLOAK_ADMIN_PASSWORD=admin
+
+Setup keycloak:
+    - créer un realm webapp
+    - créer un client client-papeterie
+    - créer un audience mapper
+    - créer des rôles (client, provider)
